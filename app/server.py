@@ -2,19 +2,12 @@ from flask import Flask, send_file, abort
 from PIL import Image
 from io import BytesIO
 from os import listdir
-from random import randint, sample
+from random import randint
 
 
 app = Flask(__name__)
 
 available_places = [place[: place.find(".")] for place in listdir("./images/places")]
-
-default_positions = []
-
-for i in range(5):
-    default_positions.append((randint(-80, 80), randint(-90, 27)))
-
-print(sample(default_positions, k=1))
 
 
 def serve_pil_image(pil_img):
@@ -33,7 +26,7 @@ def place_image(base_id: str, place_id: str, truck_id: str):
 
     base.paste(
         scaled_place,
-        ((0, 0) if place_id in available_places else sample(default_positions, k=1)[0]),
+        ((0, 0) if place_id in available_places else (randint(-80, 80), randint(-90, 27))),
         scaled_place.convert("RGBA"),
     )
     truck = Image.open(f"./images/trucks/{truck_id}.png")
@@ -81,4 +74,4 @@ def get_transparent():
 
 
 if __name__ == "__main__":
-    app.run(port=9002, debug=True)
+    app.run(port=9001, debug=True)
