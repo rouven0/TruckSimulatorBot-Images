@@ -73,5 +73,10 @@ def get_transparent():
     return send_file("./images/transparent.png")
 
 
+@app.route("/logo")
+def get_logo():
+    return send_file("./images/logo.png")
+
+
 if __name__ == "__main__":
     app.run(port=9001, debug=True)
