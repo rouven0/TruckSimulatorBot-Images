@@ -60,5 +60,18 @@ def get_base(base_id: str):
         abort(404)
 
 
+@app.route("/guide/<topic>")
+def get_guide(topic: str):
+    try:
+        return send_file(f"./images/guide/{topic}.png", mimetype="image/png")
+    except FileNotFoundError:
+        abort(404)
+
+
+@app.route("/transparent")
+def get_transparent():
+    return send_file("./images/transparent.png")
+
+
 if __name__ == "__main__":
     app.run(port=9001, debug=True)
