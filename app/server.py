@@ -21,14 +21,14 @@ def serve_pil_image(pil_img):
 def place_image(base_id: str, place_id: str, truck_id: str):
     base = Image.open(f"./images/bases/{base_id}.png")
 
-    place = Image.open(f"./images/places/{place_id if place_id in available_places else 'default'}.png")
-    scaled_place = place.resize((596, 264))
-
-    base.paste(
-        scaled_place,
-        ((0, 0) if place_id in available_places else (randint(-80, 80), randint(-90, 27))),
-        scaled_place.convert("RGBA"),
-    )
+    if place_id in available_places:
+        place = Image.open(f"./images/places/{place_id}.png")
+        scaled_place = place.resize((596, 264))
+        base.paste(scaled_place, (0, 0), scaled_place.convert("RGBA"))
+    else:
+        decoration = Image.open(f"./images/decorations/{base_id}.png")
+        for i in range(randint(3, 8)):
+            base.paste(decoration, (randint(-10, 540), randint(-10, 189)), decoration.convert("RGBA"))
     truck = Image.open(f"./images/trucks/{truck_id}.png")
     scaled_truck = truck.resize((340, 180))
     base.paste(scaled_truck, (200, 230), scaled_truck.convert("RGBA"))
