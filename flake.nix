@@ -1,5 +1,5 @@
 {
-  description = "The Purge Discord bot";
+  description = "Image API for the Truck Simulator bot";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
   outputs = { self, nixpkgs }:
