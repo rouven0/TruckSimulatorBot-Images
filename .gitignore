@@ -4,5 +4,8 @@ __pycache__
 # log and temp files
 *.swp
 
+# nix builds
+result
+
 # virtual environment
 venv/
