@@ -1,11 +1,11 @@
 { self, lib, pkgs, config, ... }:
 with lib;
 let
-  cfg = config.services.trucksimulatorbot-images;
+  cfg = config.services.trucksimulatorbot.images;
   appEnv = pkgs.python3.withPackages (p: with p; [ gunicorn (pkgs.python310Packages.callPackage ./default.nix { }) ]);
 in
 {
-  options.services.trucksimulatorbot-images = {
+  options.services.trucksimulatorbot.images = {
     enable = mkEnableOption "Trucksimulatorbot-Images";
     listenPort = mkOption {
       type = types.port;
