@@ -78,7 +78,7 @@ def get_transparent():
 @app.route("/logo")
 @app.route("/favicon.ico")
 def get_logo():
-    return send_file(f"{base_path}/images/logo.png").
+    return send_file(f"{base_path}/images/logo.png")
 
 
 if __name__ == "__main__":
