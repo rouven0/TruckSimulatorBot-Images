@@ -5,8 +5,8 @@ let
   appEnv = pkgs.python3.withPackages (p: with p; [ gunicorn (pkgs.python310Packages.callPackage ./default.nix { }) ]);
 in
 {
-  options.services.purge = {
-    enable = mkEnableOption "Purge";
+  options.services.trucksimulatorbot-images = {
+    enable = mkEnableOption "Trucksimulatorbot-Images";
     listenPort = mkOption {
       type = types.port;
       default = 9001;
@@ -23,7 +23,7 @@ in
     };
     users.groups.trucksimulatorbot = { };
 
-    systemd.services.purge = {
+    systemd.services.trucksimulatorbot-images = {
       enable = true;
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
