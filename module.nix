@@ -17,11 +17,11 @@ in
   };
 
   config = mkIf (cfg.enable) {
-    users.users.trucksimulatorbot = {
+    users.users.trucksimulatorbot-images = {
       isSystemUser = true;
-      group = "trucksimulatorbot";
+      group = "trucksimulatorbot-images";
     };
-    users.groups.trucksimulatorbot = { };
+    users.groups.trucksimulatorbot-images = { };
 
     systemd.services.trucksimulatorbot-images = {
       enable = true;
@@ -29,8 +29,8 @@ in
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         ExecStart = "${appEnv}/bin/gunicorn trucksimulatorbot-images:app -b 0.0.0.0:${toString cfg.listenPort} --error-logfile -";
-        User = "trucksimulatorbot";
-        Group = "trucksimulatorbot";
+        User = "trucksimulatorbot-images";
+        Group = "trucksimulatorbot-images";
       };
     };
   };
