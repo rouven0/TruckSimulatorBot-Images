@@ -1,4 +1,4 @@
-{ lib, buildPythonPackage, fetchPypi, python310Packages, python, ... }:
+{ buildPythonPackage, python310Packages, python, ... }:
 
 buildPythonPackage {
   name = "trucksimulatorbot-images";
