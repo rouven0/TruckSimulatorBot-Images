@@ -1,6 +1,5 @@
 {
   description = "Image API for the Truck Simulator bot";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
   outputs = { self, nixpkgs }:
     let
@@ -15,7 +14,6 @@
       hydraJobs = forAllSystems (system: {
         default = self.packages.${system}.default;
       });
-      nixosModules.default = import ./module.nix;
 
       devShells = forAllSystems (system: {
         default = pkgs.${system}.mkShellNoCC {
