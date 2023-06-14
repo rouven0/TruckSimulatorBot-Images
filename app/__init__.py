@@ -81,5 +81,10 @@ def get_logo():
     return send_file(f"{base_path}/images/logo.png")
 
 
+@app.route("/robots.txt")
+def get_robots():
+    return send_file(f"{base_path}/robots.txt")
+
+
 if __name__ == "__main__":
     app.run(port=9002, debug=True)
