@@ -1,10 +1,10 @@
-{ buildPythonPackage, python310Packages, python, ... }:
+{ buildPythonPackage, python311Packages, python, ... }:
 
 buildPythonPackage {
   name = "trucksimulatorbot-images";
   src = ./app;
 
-  propagatedBuildInputs = with python310Packages; [
+  propagatedBuildInputs = with python311Packages; [
     flask
     gunicorn
     pillow

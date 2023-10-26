@@ -9,7 +9,7 @@
     in
     {
       packages = forAllSystems (system: {
-        default = pkgs.${system}.python310Packages.callPackage ./default.nix { };
+        default = pkgs.${system}.python311Packages.callPackage ./default.nix { };
       });
       hydraJobs = forAllSystems (system: {
         default = self.packages.${system}.default;
