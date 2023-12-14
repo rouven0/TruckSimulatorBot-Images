@@ -19,6 +19,11 @@ def serve_pil_image(pil_img):
     return send_file(img_io, mimetype="image/png")
 
 
+@app.route("/health")
+def health():
+    return "OK"
+
+
 @app.route("/<base_id>/<place_id>/<truck_id>")
 def place_image(base_id: str, place_id: str, truck_id: str):
     base = Image.open(f"{base_path}/images/bases/{base_id}.png")
